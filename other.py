@@ -29,28 +29,50 @@ xyz_coordinates = [[11, 1, 1], [11, 1, 2], [11, 1, 3], [11, 1, 4], [11, 1, 5], [
 [6, 14, 6], [6, 14, 7], [6, 14, 8], [6, 14, 9], [6, 14, 10], [6, 14, 11], [6, 14, 12], [6, 14, 13], [6, 14, 14], [6, 14, 15], [6, 14, 16], [6, 14, 17], [5, 14, 5], [5, 14, 11], [5, 14, 17]]
 
 
-# Create axis
-axes = [5, 5, 5]
+# # Create axis
+# axes = [1, 1, 1]
 
-# Create Data
-data = np.ones(axes, dtype=np.bool_)
+# # Create Data
+# #data = np.ones(axes, dtype=np.bool_)
+# data = np.array(xyz_coordinates)
+# print(data.shape)
+# #data = np.random.choice([0,1], size=(axes), p=[0.99, 0.01])
 
-# Control Transparency
-alpha = 0.9
+# # Control Transparency
+# alpha = 0.9
 
-# Control colour
-colors = np.empty(axes + [4], dtype=np.float32)
+# # Control colour
+# colors = np.empty(axes + [4], dtype=np.float32)
 
-colors[:] = [1, 0, 0, alpha] # red
+# colors[:] = [1, 0, 0, alpha] # red
 
-# Plot figure
+# # Plot figure
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+
+
+
+# # Voxels is used to customizations of the
+# # sizes, positions and colors.
+# ax.voxels(data, facecolors=colors)
+
+# plt.show()
+
+X = [coord[0] for coord in xyz_coordinates]
+Z = [coord[1] for coord in xyz_coordinates]
+Y = [coord[2] for coord in xyz_coordinates]
+
+#Create a 3D scatter plot
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
+ax.scatter(X,Y,Z)
 
-# Voxels is used to customizations of the
-# sizes, positions and colors.
-ax.voxels(data, facecolors=colors)
+#Set labels
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+ax.set_zlabel('Z Label')
 
+#Show plot
 plt.show()
 
 

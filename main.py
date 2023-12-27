@@ -11,6 +11,7 @@ xyzlist = []
 value_tags_list = []
 value_block_count_list = []
 materials_list = []
+coordlist = []
 
 
 number = 1
@@ -98,7 +99,7 @@ for k in range(3):
             y = int(match[1])
             z = int(match[2])
             coordinates_list.append([x, y, z])
-
+        coordlist.append(coordinates_list)
 
     number += 1
 
@@ -113,7 +114,7 @@ print(len(materials_list))
 
 
 # Organize data into rows
-rows = zip(names, xyzlist, value_tags_list, value_block_count_list, materials_list)
+rows = zip(names, xyzlist, value_tags_list, value_block_count_list, materials_list,coordlist)
 
 # Define the CSV file name
 csv_file = 'data.csv'
@@ -122,7 +123,7 @@ csv_file = 'data.csv'
 with open(csv_file, 'w', newline='') as file:
     writer = csv.writer(file)
     # Write header if needed
-    writer.writerow(['names', 'xyzlist', 'value_tags_list', 'value_block_count_list', 'materials_list'])  # Replace with your column headers
+    writer.writerow(['names', 'xyzlist', 'value_tags_list', 'value_block_count_list', 'materials_list','coordinate list'])  # Replace with your column headers
     # Write rows from the lists
     writer.writerows(rows)
 
